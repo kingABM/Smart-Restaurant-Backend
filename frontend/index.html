@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#15120f">
+  <title>Fork & Flame | Restaurant</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Fork and Flame home">
+      <span class="brand-mark">✦</span><span>Fork <b>&</b> Flame</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#home">Home</a><a href="#menu">Menu</a><a href="#about">Our story</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-button" id="open-cart" aria-label="Open cart">Cart <span id="cart-count">0</span></button>
+      <button class="button button-small" id="open-auth">Sign in</button>
+      <button class="mobile-menu" id="mobile-menu" aria-label="Toggle navigation">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow"><span></span> FRESH INGREDIENTS · BIG FLAVOUR</p>
+        <h1>Good food.<br><em>Great mood.</em></h1>
+        <p class="hero-copy">Made with care, served with a little fire. Find your new favourite meal, made fresh when you order.</p>
+        <div class="hero-actions"><a class="button" href="#menu">Explore the menu <span>↗</span></a><span class="delivery-note">Freshly prepared, always.</span></div>
+        <div class="hero-stats"><div><strong>4.9<span>/5</span></strong><small>Guest rating</small></div><div><strong>25<span> min</span></strong><small>Average prep</small></div><div><strong>100%</strong><small>Fresh ingredients</small></div></div>
+      </div>
+      <div class="hero-visual" role="img" aria-label="Illustration of a delicious meal">
+        <div class="hero-orbit orbit-one"></div><div class="hero-orbit orbit-two"></div>
+        <div class="food-plate"><div class="plate-ring"></div><div class="plate-food">🍕</div><div class="herb herb-one">✦</div><div class="herb herb-two">✦</div></div>
+        <div class="floating-card"><span class="floating-icon">✦</span><div><b>Chef's special</b><small>Made fresh for you</small></div><strong>★ 4.9</strong></div>
+        <div class="visual-caption">A LITTLE COMFORT<br>IN EVERY BITE</div>
+      </div>
+    </section>
+
+    <section class="menu-section section-wrap" id="menu">
+      <div class="section-heading">
+        <div><p class="eyebrow">FROM OUR KITCHEN</p><h2>Find your <em>craving.</em></h2></div>
+        <p>Thoughtful ingredients. Bold flavours.<br>Something delicious for everyone.</p>
+      </div>
+      <div class="menu-toolbar">
+        <div class="category-tabs" id="category-tabs">
+          <button class="category active" data-category="All">All dishes</button>
+          <button class="category" data-category="Pizza">Pizza</button>
+          <button class="category" data-category="Mains">Mains</button>
+          <button class="category" data-category="Pasta">Pasta</button>
+          <button class="category" data-category="Sides">Sides</button>
+        </div>
+        <label class="search-box"><span>⌕</span><input id="menu-search" type="search" placeholder="Find a dish..."></label>
+      </div>
+      <div class="menu-grid" id="menu-grid"></div>
+    </section>
+
+    <section class="story-section" id="about">
+      <div class="story-symbol">✦</div><div><p class="eyebrow">MORE THAN A MEAL</p><h2>Made for the moments<br><em>that matter.</em></h2></div>
+      <p>From the first sizzle to the final bite, we believe good food brings people together. Pick your favourites and let us take care of the rest.</p>
+      <a href="#menu" class="text-link">See what's cooking <span>↗</span></a>
+    </section>
+  </main>
+
+  <footer><a class="brand" href="#home"><span class="brand-mark">✦</span><span>Fork <b>&</b> Flame</span></a><span>Good food, made with heart.</span><span id="api-status" class="api-status"><i></i> Checking API…</span></footer>
+
+  <div class="overlay" id="cart-overlay" hidden>
+    <aside class="drawer">
+      <div class="drawer-head"><div><p class="eyebrow">YOUR ORDER</p><h2>Your basket</h2></div><button class="close-button" data-close="cart-overlay" aria-label="Close cart">×</button></div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-footer"><div class="subtotal"><span>Subtotal</span><strong id="cart-total">EGP 0.00</strong></div><p class="muted">Checkout is a demo flow until an order endpoint is connected.</p><button id="checkout-button" class="button button-full">Continue to checkout <span>→</span></button><p id="cart-message" class="form-message" role="status"></p></div>
+    </aside>
+  </div>
+
+  <div class="overlay" id="auth-overlay" hidden>
+    <section class="auth-modal">
+      <button class="close-button auth-close" data-close="auth-overlay" aria-label="Close sign in">×</button>
+      <p class="eyebrow">WELCOME TO THE TABLE</p><h2 id="auth-title">Sign in <em>and savour.</em></h2>
+      <div class="auth-switch"><button class="active" data-auth-mode="login">Sign in</button><button data-auth-mode="register">Create account</button></div>
+      <form id="auth-form">
+        <label id="name-field" hidden>Full name<input name="name" autocomplete="name" placeholder="Your name"></label>
+        <label id="phone-field" hidden>Phone number<input name="phone_number" autocomplete="tel" placeholder="01xxxxxxxxx"></label>
+        <label>Email address<input name="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+        <label>Password<input name="password" type="password" autocomplete="current-password" required minlength="6" placeholder="At least 6 characters"></label>
+        <button class="button button-full" id="auth-submit" type="submit">Sign in <span>→</span></button>
+        <p id="auth-message" class="form-message" role="status"></p>
+      </form>
+      <p class="auth-footnote">Connected to your Restaurant API when available.</p>
+    </section>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
